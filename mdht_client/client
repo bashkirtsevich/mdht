@@ -48,17 +48,19 @@ def bootstrap(address_str):
     return deferred
 
 if __name__ == "__main__":
-    address_str = 'weezy.us:1337'
-    example = 0x982AE8129CEDABED2E8DD4735E3E00A0CE2E7509
-    rpc_client = RPCClient()
-    # TODO make this a proper deferred function of krpc_simple
-    #d = bootstrap(address_str)
-    #rpc_client.ping(address_str)
-    #rpc_client.find_node(address_str, example)
-    #rpc_client.get_peers(address_str, example)
-    #rpc_client.grab_nodes()
-    rpc_client.get(example)
-    #d.addCallback(lambda _ign: rpc_client.get(example))
+    address_str = 'router.bittorrent.com:6881'
+    example = 0xB50D064E6E290ED912D618BF28943606F0D531CB
 
-    # // TODO clean shutdown
+    rpc_client = RPCClient()
+
+    # TODO make this a proper deferred function of krpc_simple
+    d = bootstrap(address_str)
+    # rpc_client.ping(address_str)
+    # rpc_client.find_node(address_str, example)
+    rpc_client.get_peers(address_str, example)
+    # rpc_client.grab_nodes()
+    # rpc_client.get(example)
+    # d.addCallback(lambda _ign: rpc_client.get(example))
+
+    # TODO clean shutdown
     rpc_client.start_loop()
